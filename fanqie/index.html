@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>番茄时钟 - 专注工作利器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 标题区域 -->
+        <header class="header">
+            <h1>🍅 番茄时钟</h1>
+            <p class="subtitle">专注工作，高效生活</p>
+        </header>
+
+        <!-- 主计时器区域 -->
+        <main class="timer-section">
+            <!-- 模式切换按钮 -->
+            <div class="mode-tabs">
+                <button class="mode-tab active" data-mode="pomodoro" data-minutes="25">番茄钟</button>
+                <button class="mode-tab" data-mode="short-break" data-minutes="5">短休息</button>
+                <button class="mode-tab" data-mode="long-break" data-minutes="15">长休息</button>
+            </div>
+
+            <!-- 计时器显示 -->
+            <div class="timer-display">
+                <span id="timer" class="time-text">25:00</span>
+                <div id="mode-label" class="mode-label">番茄钟</div>
+            </div>
+
+            <!-- 控制按钮 -->
+            <div class="controls">
+                <button id="start-btn" class="control-btn primary">开始</button>
+                <button id="pause-btn" class="control-btn secondary" disabled>暂停</button>
+                <button id="reset-btn" class="control-btn danger">重置</button>
+            </div>
+
+            <!-- 时长设置 -->
+            <div class="settings">
+                <details class="settings-panel">
+                    <summary>⚙️ 自定义时长</summary>
+                    <div class="settings-form">
+                        <div class="setting-item">
+                            <label>番茄钟（分钟）：</label>
+                            <input type="number" id="pomodoro-time" value="25" min="1" max="60">
+                        </div>
+                        <div class="setting-item">
+                            <label>短休息（分钟）：</label>
+                            <input type="number" id="short-break-time" value="5" min="1" max="30">
+                        </div>
+                        <div class="setting-item">
+                            <label>长休息（分钟）：</label>
+                            <input type="number" id="long-break-time" value="15" min="1" max="60">
+                        </div>
+                        <button id="save-settings" class="save-btn">保存设置</button>
+                    </div>
+                </details>
+            </div>
+        </main>
+
+        <!-- 统计区域 -->
+        <aside class="stats-section">
+            <!-- 今日统计 -->
+            <div class="today-stats">
+                <h2>📊 今日统计</h2>
+                <div class="stat-item">
+                    <span class="stat-label">完成番茄钟</span>
+                    <span id="today-count" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">累计时长</span>
+                    <span id="today-duration" class="stat-value">0 分钟</span>
+                </div>
+            </div>
+
+            <!-- 历史记录 -->
+            <div class="history-section">
+                <h2>📅 历史记录</h2>
+                <button id="toggle-history" class="toggle-btn">展开记录</button>
+                <div id="history-list" class="history-list hidden">
+                    <!-- 动态生成历史记录 -->
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 提示弹窗 -->
+    <div id="alert-modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="alert-message" class="alert-text">计时结束！</p>
+            <button id="close-alert" class="modal-btn">确定</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
